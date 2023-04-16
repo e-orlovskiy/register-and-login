@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname, '/public'), {
+app.use(express.static(path.join(__dirname, '../public'), {
   extensions: ['html', 'css', 'js']
 }))
 
@@ -25,12 +25,13 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('users', userSchema)
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/register.html')
+
+app.get('/', async (req, res) => {
+  res.sendFile(path.join(__dirname + '/../public', 'register.html'))
 })
 
 app.get('/register', (req, res) => {
-  res.sendFile(__dirname + '/public/register.html')
+  res.sendFile(path.join(__dirname + '/../public', 'register.html'))
 })
 
 app.post('/register', async (req, res) => {
@@ -56,7 +57,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/public/login.html')
+  res.sendFile(path.join(__dirname + '/../public', 'login.html'))
 });
 
 app.post('/login', async (req, res) => {
