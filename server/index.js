@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('users', userSchema)
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/register.html')
+})
+
 app.get('/register', (req, res) => {
   res.sendFile(__dirname + '/public/register.html')
 })
